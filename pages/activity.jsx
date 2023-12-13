@@ -1,10 +1,12 @@
 import RandomActivityComponent from "@/components/Activity";
+import PageLayoyt from "@/components/PagesLayout";
+
 
 export default function ActivityPage() {
   return (
-    <div>
+    <PageLayoyt>
       Activity
       <RandomActivityComponent />
-    </div>
+    </PageLayoyt>
   );
 }
