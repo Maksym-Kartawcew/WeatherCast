@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   getWeatherByCity,
   getWeatherByGeoLocation,
@@ -16,6 +16,7 @@ import {
   WeatherItems,
   HomeButton,
   WeatherToActivity,
+  SectionIcon,
 } from "./Components.styled";
 import styles from "./Components.module.css";
 import { IoMdPartlySunny } from "react-icons/io";
@@ -30,6 +31,10 @@ const WeatherComponent = () => {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
@@ -96,9 +101,9 @@ const WeatherComponent = () => {
             </button>
           </WeatherByCityBox>
         </div>
-        <div>
+        < SectionIcon>
           <IoMdPartlySunny fill="yellow" size="250px" />
-        </div>
+        </ SectionIcon>
       </WeatherSection>
 
       {weather && (

@@ -18,6 +18,10 @@ export const NavigationBox = styled.ul`
   border-bottom: 2px solid white;
   justify-content: center;
   color: white;
+  @media (max-width: 600px) {
+    font-size: 16px;
+    gap: 25px;
+  }
 `;
 export const ButtonBox = styled.div`
   margin: 0 auto;
@@ -30,6 +34,9 @@ export const HomeSection = styled.div`
   gap: 50px;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 export const HomeDescr = styled.div`
   margin: 0 auto;
@@ -42,11 +49,14 @@ export const HomeTitle = styled.p`
   color: white;
   font-size: 40px;
   margin-bottom: 20px;
+  @media (max-width: 600px) {
+    font-size: 25px;
+  }
 `;
 export const HomeButton = styled.button`
   color: #08244f;
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 20px;
   padding: 15px;
   border-radius: 10px;
   background-color: white;
@@ -59,6 +69,10 @@ export const HomeButton = styled.button`
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
       0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
   }
+  @media (max-width: 600px) {
+    font-size: 15px;
+    padding: 12px;
+  }
 `;
 
 export const WeatherSection = styled.section`
@@ -68,6 +82,9 @@ export const WeatherSection = styled.section`
   gap: 50px;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 export const WeatherByCityBox = styled.div`
   display: flex;
@@ -120,6 +137,9 @@ export const ActivitySection = styled.div`
   gap: 50px;
   justify-content: center;
   align-items: center;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 export const ActivityInformation = styled.div`
   color: white;
@@ -142,6 +162,11 @@ export const NoWeather = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const SectionIcon = styled.div`
+  display: flex;
   justify-content: center;
   align-items: center;
 `;

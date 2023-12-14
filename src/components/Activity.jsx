@@ -9,6 +9,7 @@ import {
   ActivityItem,
   NoWeather,
   HomeButton,
+  SectionIcon,
 } from "./Components.styled";
 import { MdOutlineSportsTennis } from "react-icons/md";
 import { VscReactions } from "react-icons/vsc";
@@ -68,9 +69,9 @@ const ActivityPage = () => {
 
   return (
     <ActivitySection>
-      <div>
+      <SectionIcon>
         <MdOutlineSportsTennis fill="yellow" size="250px" />
-      </div>
+      </SectionIcon>
       <ActivityInformation>
         <ActivityTitle>Recommended Activity</ActivityTitle>
         <ActivityItem>
