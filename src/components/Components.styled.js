@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding: 0px 20px;
+  padding: 0px 16px;
   max-width: 1000px;
   height: 100vh;
 `;
@@ -113,6 +113,9 @@ export const WeatherInformation = styled.div`
 export const WeatherItems = styled.div`
   display: flex;
   gap: 50px;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 export const WeatherItem = styled.p`
   display: flex;
@@ -128,7 +131,11 @@ export const WeatherToActivity = styled.div`
   align-items: center;
   margin: 0 auto;
   margin-top: 15px;
+  margin-bottom: 25px;
   gap: 30px;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 export const ActivitySection = styled.div`
   padding-top: 20px;
@@ -144,18 +151,22 @@ export const ActivitySection = styled.div`
 export const ActivityInformation = styled.div`
   color: white;
   font-size: 20px;
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
 `;
 
 export const ActivityTitle = styled.h1`
   font-size: 30px;
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 export const ActivityItem = styled.p`
   display: flex;
   gap: 20px;
   align-items: center;
-
-  font-size: 20px;
-  margin-top: 10px;
+    margin-top: 10px;
   margin-bottom: 10px;
 `;
 export const NoWeather = styled.div`

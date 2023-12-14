@@ -75,11 +75,11 @@ const ActivityPage = () => {
       <ActivityInformation>
         <ActivityTitle>Recommended Activity</ActivityTitle>
         <ActivityItem>
-          <VscReactions fill="white" size="50px" />
+          <VscReactions fill="white" size="40px" />
           Activity: {activity.activity}
         </ActivityItem>
         <ActivityItem>
-          <HiOutlineArrowsExpand fill="white" size="50px" />
+          <HiOutlineArrowsExpand fill="white" size="40px" />
           Type: {activity.type}
         </ActivityItem>
       </ActivityInformation>
