@@ -6,6 +6,20 @@ import {
 } from "../services/api/weather-api.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  WeatherSection,
+  WeatherInput,
+  WeatherByCityBox,
+  WeatherInformation,
+  WeatherItem,
+} from "./Components.styled";
+import styles from "./Components.module.css";
+import { IoMdPartlySunny } from "react-icons/io";
+import { WiStrongWind } from "react-icons/wi";
+import { WiDayRainWind } from "react-icons/wi";
+import { MdVisibility } from "react-icons/md";
+import { FaTemperatureLow } from "react-icons/fa";
+import { CgCompressV } from "react-icons/cg";
 
 const WeatherComponent = () => {
   const [weather, setWeather] = useState(null);
@@ -20,7 +34,6 @@ const WeatherComponent = () => {
     try {
       const data = await getWeatherByCity(city);
       if (data && data.weather) {
-        // City found, update weather data
         localStorage.removeItem("weatherCondition");
         localStorage.setItem("weatherCondition", data.weather[0].main);
         setWeather(data);
@@ -42,9 +55,7 @@ const WeatherComponent = () => {
           position.coords.latitude,
           position.coords.longitude
         );
-        // Clear the previous weather condition
         localStorage.removeItem("weatherCondition");
-        // Save the new weather condition
         localStorage.setItem("weatherCondition", data.weather[0].main);
         setWeather(data);
       },
@@ -55,31 +66,63 @@ const WeatherComponent = () => {
   };
 
   return (
-    <div>
-      <ToastContainer />
-      <input
-        type="text"
-        value={city}
-        onChange={handleCityChange}
-        placeholder="Enter city name"
-      />
-      <button onClick={fetchWeatherDataByCity} disabled={!city.trim()}>
-        Get Weather by City
-      </button>
-
-      <button onClick={fetchWeatherDataByGeoLocation}>
-        Get Weather by Your Location
-      </button>
-      {weather && (
+    <>
+      <WeatherSection>
         <div>
-          <h1>Weather in {weather.name || "your location"}</h1>
-          <p>Main weather: {weather.weather[0].main}</p>
-          <p>Wind speed: {weather.wind.speed} m/s</p>
-          <p>Visibility: {weather.visibility / 1000} km</p>
-          <p>Temperature: {weather.main.temp}°C</p>
+          <WeatherByCityBox>
+            <WeatherInput
+              type="text"
+              value={city}
+              onChange={handleCityChange}
+              placeholder="Enter city name"
+            />
+            <button
+              onClick={fetchWeatherDataByCity}
+              disabled={!city.trim()}
+              className={styles.weatherbutton}
+            >
+              Get Weather by City
+            </button>
+            <button
+              onClick={fetchWeatherDataByGeoLocation}
+              className={styles.weatherbutton}
+            >
+              Get Weather by Your Location
+            </button>
+          </WeatherByCityBox>
         </div>
+        <div>
+          <IoMdPartlySunny fill="yellow" size="300px" />
+        </div>
+      </WeatherSection>
+
+      {weather && (
+        <WeatherInformation>
+          <h1>Weather in {weather.name || "your location"}</h1>
+          <WeatherItem>
+            <FaTemperatureLow fill="white" size="50px" />
+            Temperature: {weather.main.temp}°C
+          </WeatherItem>
+          <WeatherItem>
+            <WiDayRainWind fill="white" size="50px" />
+            Main weather: {weather.weather[0].main}
+          </WeatherItem>
+          <WeatherItem>
+            <WiStrongWind fill="white" size="50px" />
+            Wind speed: {weather.wind.speed} m/s
+          </WeatherItem>
+          <WeatherItem>
+            <MdVisibility fill="white" size="50px" />
+            Visibility: {weather.visibility / 1000} km
+          </WeatherItem>
+          <WeatherItem>
+            <CgCompressV fill="white" size="50px" />
+            Visibility: {weather.main.pressure} mbar
+          </WeatherItem>
+        </WeatherInformation>
       )}
-    </div>
+      <ToastContainer />
+    </>
   );
 };
 

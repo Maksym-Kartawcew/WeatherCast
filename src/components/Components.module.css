@@ -1,0 +1,24 @@
+.weatherbutton {
+  max-width: fit-content;
+  color: #08244f;
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  border: 0px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.weatherbutton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.weatherbutton:focus {
+  outline: none;
+  box-shadow: 0 0 5px #08244f;
+}
+
+.weatherbutton:hover {
+  background-color: #aac8ff;
+}
