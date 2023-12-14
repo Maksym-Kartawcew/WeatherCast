@@ -7,6 +7,8 @@ import {
   ActivityTitle,
   ActivityInformation,
   ActivityItem,
+  NoWeather,
+  HomeButton,
 } from "./Components.styled";
 import { MdOutlineSportsTennis } from "react-icons/md";
 import { VscReactions } from "react-icons/vsc";
@@ -51,21 +53,23 @@ const ActivityPage = () => {
 
   if (!weatherKnown) {
     return (
-      <div>
-        <p>The weather is unknown, go back to get weather.</p>
-        <Link href="/weather">Go to Weather Page</Link>
-      </div>
+      <NoWeather>
+        <h3> The weather is unknown, go back to get weather.</h3>
+        <Link href="/weather">
+          <HomeButton type="button">Go to Weather Page</HomeButton>
+        </Link>
+      </NoWeather>
     );
   }
 
   if (!activity) {
-    return <div>Loading recommended activity...</div>;
+    return <ActivityItem>Loading recommended activity...</ActivityItem>;
   }
 
   return (
     <ActivitySection>
       <div>
-        <MdOutlineSportsTennis fill="yellow" size="300px" />
+        <MdOutlineSportsTennis fill="yellow" size="250px" />
       </div>
       <ActivityInformation>
         <ActivityTitle>Recommended Activity</ActivityTitle>

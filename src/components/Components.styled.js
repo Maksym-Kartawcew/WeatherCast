@@ -25,7 +25,7 @@ export const ButtonBox = styled.div`
 `;
 export const HomeSection = styled.div`
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 20px;
   display: flex;
   gap: 50px;
   justify-content: center;
@@ -40,14 +40,14 @@ export const HomeDescr = styled.div`
 export const HomeTitle = styled.p`
   text-align: center;
   color: white;
-  font-size: 50px;
+  font-size: 40px;
   margin-bottom: 20px;
 `;
 export const HomeButton = styled.button`
   color: #08244f;
   margin: 0 auto;
   font-size: 25px;
-  padding: 25px;
+  padding: 15px;
   border-radius: 10px;
   background-color: white;
   border: 0px;
@@ -62,8 +62,8 @@ export const HomeButton = styled.button`
 `;
 
 export const WeatherSection = styled.section`
+  padding-top: 20px;
   margin: 0 auto;
-  padding-top: 30px;
   display: flex;
   gap: 50px;
   justify-content: center;
@@ -101,7 +101,6 @@ export const WeatherItem = styled.p`
   display: flex;
   gap: 20px;
   align-items: center;
-
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -111,11 +110,12 @@ export const WeatherToActivity = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-top: 15px;
   gap: 30px;
 `;
 export const ActivitySection = styled.div`
+  padding-top: 20px;
   margin: 0 auto;
-  padding-top: 30px;
   display: flex;
   gap: 50px;
   justify-content: center;
@@ -127,7 +127,7 @@ export const ActivityInformation = styled.div`
 `;
 
 export const ActivityTitle = styled.h1`
-  font-size: 40px;
+  font-size: 30px;
 `;
 export const ActivityItem = styled.p`
   display: flex;
@@ -137,4 +137,11 @@ export const ActivityItem = styled.p`
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+`;
+export const NoWeather = styled.div`
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

@@ -24,6 +24,7 @@ import { WiDayRainWind } from "react-icons/wi";
 import { MdVisibility } from "react-icons/md";
 import { FaTemperatureLow } from "react-icons/fa";
 import { CgCompressV } from "react-icons/cg";
+import { WiHumidity } from "react-icons/wi";
 
 const WeatherComponent = () => {
   const [weather, setWeather] = useState(null);
@@ -96,13 +97,13 @@ const WeatherComponent = () => {
           </WeatherByCityBox>
         </div>
         <div>
-          <IoMdPartlySunny fill="yellow" size="300px" />
+          <IoMdPartlySunny fill="yellow" size="250px" />
         </div>
       </WeatherSection>
 
       {weather && (
         <WeatherInformation>
-          <h2>Weather in {weather.name || "your location"}</h2>
+          <h3>Weather in {weather.name || "your location"}</h3>
           <WeatherItems>
             <div>
               <WeatherItem>
@@ -125,13 +126,17 @@ const WeatherComponent = () => {
               </WeatherItem>
               <WeatherItem>
                 <CgCompressV fill="white" size="40px" />
-                Visibility: {weather.main.pressure} mbar
+                Pressure: {weather.main.pressure} mbar
+              </WeatherItem>
+              <WeatherItem>
+                <WiHumidity fill="white" size="40px" />
+                Humidity: {weather.main.humidity} %
               </WeatherItem>
             </div>
           </WeatherItems>
 
           <WeatherToActivity>
-            <h2> Looking for some activity in this weather?</h2>
+            <h3> Looking for some activity in this weather?</h3>
             <Link href="/activity">
               <HomeButton type="button">Press here!</HomeButton>
             </Link>
