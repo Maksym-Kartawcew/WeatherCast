@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import {
   getWeatherByCity,
@@ -12,6 +13,9 @@ import {
   WeatherByCityBox,
   WeatherInformation,
   WeatherItem,
+  WeatherItems,
+  HomeButton,
+  WeatherToActivity,
 } from "./Components.styled";
 import styles from "./Components.module.css";
 import { IoMdPartlySunny } from "react-icons/io";
@@ -98,27 +102,40 @@ const WeatherComponent = () => {
 
       {weather && (
         <WeatherInformation>
-          <h1>Weather in {weather.name || "your location"}</h1>
-          <WeatherItem>
-            <FaTemperatureLow fill="white" size="50px" />
-            Temperature: {weather.main.temp}°C
-          </WeatherItem>
-          <WeatherItem>
-            <WiDayRainWind fill="white" size="50px" />
-            Main weather: {weather.weather[0].main}
-          </WeatherItem>
-          <WeatherItem>
-            <WiStrongWind fill="white" size="50px" />
-            Wind speed: {weather.wind.speed} m/s
-          </WeatherItem>
-          <WeatherItem>
-            <MdVisibility fill="white" size="50px" />
-            Visibility: {weather.visibility / 1000} km
-          </WeatherItem>
-          <WeatherItem>
-            <CgCompressV fill="white" size="50px" />
-            Visibility: {weather.main.pressure} mbar
-          </WeatherItem>
+          <h2>Weather in {weather.name || "your location"}</h2>
+          <WeatherItems>
+            <div>
+              <WeatherItem>
+                <FaTemperatureLow fill="white" size="40px" />
+                Temperature: {weather.main.temp}°C
+              </WeatherItem>
+              <WeatherItem>
+                <WiDayRainWind fill="white" size="40px" />
+                Main weather: {weather.weather[0].main}
+              </WeatherItem>
+              <WeatherItem>
+                <WiStrongWind fill="white" size="40px" />
+                Wind speed: {weather.wind.speed} m/s
+              </WeatherItem>
+            </div>
+            <div>
+              <WeatherItem>
+                <MdVisibility fill="white" size="40px" />
+                Visibility: {weather.visibility / 1000} km
+              </WeatherItem>
+              <WeatherItem>
+                <CgCompressV fill="white" size="40px" />
+                Visibility: {weather.main.pressure} mbar
+              </WeatherItem>
+            </div>
+          </WeatherItems>
+
+          <WeatherToActivity>
+            <h2> Looking for some activity in this weather?</h2>
+            <Link href="/activity">
+              <HomeButton type="button">Press here!</HomeButton>
+            </Link>
+          </WeatherToActivity>
         </WeatherInformation>
       )}
       <ToastContainer />
