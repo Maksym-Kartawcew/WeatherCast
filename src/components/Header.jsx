@@ -1,10 +1,10 @@
 import Link from "next/link";
+import { NavigationBox } from "./Components.styled";
 
 export default function Header() {
   return (
-    <div>
-      <ul>
-        <li>
+    <NavigationBox>
+             <li>
           <Link href="/">Home</Link>
         </li>
         <li>
@@ -13,7 +13,6 @@ export default function Header() {
         <li>
           <Link href="/activity">Activity</Link>
         </li>
-      </ul>
-    </div>
+          </NavigationBox>
   );
 }

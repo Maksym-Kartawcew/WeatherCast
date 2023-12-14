@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import {
   getWeatherByCity,
@@ -24,8 +25,8 @@ const WeatherComponent = () => {
         localStorage.setItem("weatherCondition", data.weather[0].main);
         setWeather(data);
       } else {
-   toast.error("Location not found. Please enter a valid city.");
-   setWeather(null);
+        toast.error("Location not found. Please enter a valid city.");
+        setWeather(null);
       }
     } catch (error) {
       console.error("Error fetching weather data:", error);

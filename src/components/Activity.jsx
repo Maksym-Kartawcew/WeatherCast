@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import { getActivity } from "../services/api/activity-api";
 import Link from "next/link"; 
