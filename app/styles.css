@@ -9,7 +9,12 @@
 }
 
 body {
-  background-color: aquamarine;
+  background: linear-gradient(
+    167deg,
+    #08244f 0%,
+    #134cb5 47.38%,
+    #0b42ab 100%
+  );
 }
 
 a {
