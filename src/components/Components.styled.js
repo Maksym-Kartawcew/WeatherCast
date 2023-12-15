@@ -7,7 +7,6 @@ export const Container = styled.div`
   max-width: 1000px;
   height: 100vh;
 `;
-
 export const NavigationBox = styled.ul`
   display: flex;
   gap: 50px;
@@ -85,7 +84,6 @@ export const HomeButton = styled.button`
     padding: 12px;
   }
 `;
-
 export const WeatherSection = styled.section`
   padding-top: 20px;
   margin: 0 auto;
@@ -116,7 +114,7 @@ export const WeatherInput = styled.input`
 export const WeatherMessage = styled.div`
   color: white;
   text-align: center;
-`
+`;
 export const WeatherInformation = styled.div`
   display: flex;
   flex-direction: column;
@@ -170,7 +168,6 @@ export const ActivityInformation = styled.div`
     font-size: 16px;
   }
 `;
-
 export const ActivityTitle = styled.h1`
   font-size: 30px;
   @media (max-width: 600px) {
@@ -196,7 +193,6 @@ export const SectionIcon = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 export const WeatherButton = styled.button`
   max-width: fit-content;
   color: #08244f;
@@ -212,7 +208,6 @@ export const WeatherButton = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
   }
-
   &:focus {
     background-color: #134cb5;
     box-shadow:
@@ -220,7 +215,6 @@ export const WeatherButton = styled.button`
       0px 1px 1px rgba(46, 47, 66, 0.16),
       0px 2px 1px rgba(46, 47, 66, 0.08);
   }
-
   &:hover {
     background-color: #134cb5;
     box-shadow:
