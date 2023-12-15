@@ -20,6 +20,7 @@ export const useWeatherByCity = () => {
   return useQuery({
     queryKey: ["weatherByCity", city],
     enabled: city !== "",
+    retry: 0,
     queryFn: async () => {
       const response = await axios.get(
         "https://api.openweathermap.org/data/2.5/weather",
