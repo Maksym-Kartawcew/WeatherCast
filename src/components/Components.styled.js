@@ -1,5 +1,5 @@
 "use client";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -23,6 +23,15 @@ export const NavigationBox = styled.ul`
     gap: 25px;
   }
 `;
+export const NavigationLink = styled.li`
+  padding: 10px;
+  border-radius: 10px;
+  ${(props) =>
+    props.$isActive &&
+    css`
+      background-color: #365a92;
+    `}
+`;
 export const ButtonBox = styled.div`
   margin: 0 auto;
   justify-content: center;
@@ -38,7 +47,7 @@ export const HomeSection = styled.div`
     display: block;
   }
 `;
-export const HomeDescr = styled.div`
+export const HomeDescription = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -66,8 +75,10 @@ export const HomeButton = styled.button`
   &:hover,
   :focus {
     background-color: #134cb5;
-    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-      0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+    box-shadow:
+      0px 1px 6px rgba(46, 47, 66, 0.08),
+      0px 1px 1px rgba(46, 47, 66, 0.16),
+      0px 2px 1px rgba(46, 47, 66, 0.08);
   }
   @media (max-width: 600px) {
     font-size: 15px;
@@ -86,7 +97,7 @@ export const WeatherSection = styled.section`
     display: block;
   }
 `;
-export const WeatherByCityBox = styled.div`
+export const WeatherByCityContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,6 +113,10 @@ export const WeatherInput = styled.input`
   border-radius: 10px;
   background-color: white;
 `;
+export const WeatherMessage = styled.div`
+  color: white;
+  text-align: center;
+`
 export const WeatherInformation = styled.div`
   display: flex;
   flex-direction: column;
@@ -166,7 +181,7 @@ export const ActivityItem = styled.p`
   display: flex;
   gap: 20px;
   align-items: center;
-    margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 `;
 export const NoWeather = styled.div`
@@ -180,4 +195,37 @@ export const SectionIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const WeatherButton = styled.button`
+  max-width: fit-content;
+  color: #08244f;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+  border: 0px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    background-color: #134cb5;
+    box-shadow:
+      0px 1px 6px rgba(46, 47, 66, 0.08),
+      0px 1px 1px rgba(46, 47, 66, 0.16),
+      0px 2px 1px rgba(46, 47, 66, 0.08);
+  }
+
+  &:hover {
+    background-color: #134cb5;
+    box-shadow:
+      0px 1px 6px rgba(46, 47, 66, 0.08),
+      0px 1px 1px rgba(46, 47, 66, 0.16),
+      0px 2px 1px rgba(46, 47, 66, 0.08);
+  }
 `;

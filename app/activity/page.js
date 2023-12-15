@@ -1,4 +1,4 @@
-import RandomActivityComponent from "@/components/Activity";
+import { RandomActivityComponent } from "@/components/Activity";
 
 export default function ActivityPage() {
   return (

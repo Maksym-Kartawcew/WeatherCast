@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { getActivity } from "../services/api/activity-api";
+import React from "react";
 import Link from "next/link";
 import {
   ActivitySection,
@@ -14,56 +13,28 @@ import {
 import { MdOutlineSportsTennis } from "react-icons/md";
 import { VscReactions } from "react-icons/vsc";
 import { HiOutlineArrowsExpand } from "react-icons/hi";
+import { useActivity } from "@/hooks/useActivity";
+import { getWeatherCondition, useWeather } from "@/hooks/useWeather";
+import { links } from "@/config/links";
+import { useCity } from "@/contexts/AppStateContext";
 
-const ActivityPage = () => {
-  const [activity, setActivity] = useState(null);
-  const [weatherKnown, setWeatherKnown] = useState(true);
+export const RandomActivityComponent = () => {
+  const { data: weather } = useWeather();
+  const { isCitySet, city } = useCity();
+  const { data, isLoading } = useActivity();
 
-  useEffect(() => {
-    const weatherCondition = localStorage.getItem("weatherCondition");
-
-    if (!weatherCondition) {
-      setWeatherKnown(false);
-      return;
-    }
-
-    const indoorWeatherConditions = ["rain", "clouds", "snow", "mist"];
-    const indoorActivities = ["diy", "cooking", "music"];
-    const otherActivities = [
-      "education",
-      "recreational",
-      "social",
-      "charity",
-      "relaxation",
-      "busywork",
-    ];
-
-    let activityType = indoorWeatherConditions.some((condition) =>
-      weatherCondition.toLowerCase().includes(condition)
-    )
-      ? indoorActivities[Math.floor(Math.random() * indoorActivities.length)]
-      : otherActivities[Math.floor(Math.random() * otherActivities.length)];
-
-    const fetchActivity = async () => {
-      const activityData = await getActivity(activityType);
-      setActivity(activityData);
-    };
-
-    fetchActivity();
-  }, []);
-
-  if (!weatherKnown) {
+  if (!data) {
     return (
       <NoWeather>
-        <h3> The weather is unknown, go back to get weather.</h3>
-        <Link href="/weather">
+        <h3>The weather is unknown, go back to get weather.</h3>
+        <Link href={links.weather.href}>
           <HomeButton type="button">Go to Weather Page</HomeButton>
         </Link>
       </NoWeather>
     );
   }
 
-  if (!activity) {
+  if (isLoading) {
     return <ActivityItem>Loading recommended activity...</ActivityItem>;
   }
 
@@ -73,18 +44,22 @@ const ActivityPage = () => {
         <MdOutlineSportsTennis fill="yellow" size="250px" />
       </SectionIcon>
       <ActivityInformation>
-        <ActivityTitle>Recommended Activity</ActivityTitle>
+        <ActivityTitle>
+          Recommended Activity for: {getWeatherCondition(weather)}
+        </ActivityTitle>
+        <ActivityItem>
+          {isCitySet ? `City: ${city}` : "For your current location"}
+        </ActivityItem>
         <ActivityItem>
           <VscReactions fill="white" size="40px" />
-          Activity: {activity.activity}
+          Activity: {data.activity}
         </ActivityItem>
         <ActivityItem>
           <HiOutlineArrowsExpand fill="white" size="40px" />
-          Type: {activity.type}
+          Type: {data.type}
         </ActivityItem>
       </ActivityInformation>
     </ActivitySection>
   );
 };
 
-export default ActivityPage;
