@@ -48,7 +48,9 @@ export const RandomActivityComponent = () => {
           Recommended Activity for: {getWeatherCondition(weather)}
         </ActivityTitle>
         <ActivityItem>
-          {isCitySet ? `City: ${city}` : "For your current location"}
+          {isCitySet
+            ? `City: ${city}`
+            : `For your current location: ${weather.name}`}
         </ActivityItem>
         <ActivityItem>
           <VscReactions fill="white" size="40px" />
@@ -62,4 +64,3 @@ export const RandomActivityComponent = () => {
     </ActivitySection>
   );
 };
-

@@ -35,7 +35,9 @@ export const WeatherData = () => {
 
   return (
     <WeatherInformation>
-      <h3>Weather in {isCitySet ? weather.name : "your location"}</h3>
+      <h3>
+        Weather in {isCitySet ? weather.name : `your location: ${weather.name}`}
+      </h3>
       <WeatherItems>
         <div>
           <WeatherItem>

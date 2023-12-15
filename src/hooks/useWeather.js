@@ -2,18 +2,15 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useCity } from "@/contexts/AppStateContext";
+
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export const useWeather = () => {
-  const { isCitySet } = useCity();
+  const { city, isCitySet } = useCity();
   const weatherByCurrentLocation = useWeatherByGeoLocation();
   const weatherByCity = useWeatherByCity();
 
-  if (isCitySet) {
-    return weatherByCity;
-  }
-
-  return weatherByCurrentLocation;
+  return isCitySet ? weatherByCity : weatherByCurrentLocation;
 };
 
 export const getWeatherCondition = (data) => data?.weather[0].main ?? null;
@@ -21,7 +18,7 @@ export const getWeatherCondition = (data) => data?.weather[0].main ?? null;
 export const useWeatherByCity = () => {
   const { city } = useCity();
   return useQuery({
-    queryKey: `weatherByCity-${city}`,
+    queryKey: ["weatherByCity", city],
     enabled: city !== "",
     queryFn: async () => {
       const response = await axios.get(
@@ -42,6 +39,7 @@ export const useWeatherByCity = () => {
 
 export const useWeatherByGeoLocation = () => {
   const [userLocation, setUserLocation] = useState({ lat: null, lon: null });
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -55,9 +53,9 @@ export const useWeatherByGeoLocation = () => {
       }
     );
   }, []);
-  
+
   return useQuery({
-    queryKey: "weatherByCity" + userLocation.lat + userLocation.lon,
+    queryKey: ["weatherByGeoLocation", userLocation.lat, userLocation.lon],
     enabled: userLocation.lat !== null && userLocation.lon !== null,
     queryFn: async () => {
       const response = await axios.get(

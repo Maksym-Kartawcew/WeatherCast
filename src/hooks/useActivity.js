@@ -5,7 +5,8 @@ import {
   indoorWeatherConditions,
   otherActivities,
 } from "@/config/activitiesAndConditions";
-import {getWeatherCondition, useWeather} from "@/hooks/useWeather";
+import { getWeatherCondition, useWeather } from "@/hooks/useWeather";
+
 const getActivityTypeByWeather = (weather) => {
   const weatherCondition = getWeatherCondition(weather);
   if (!weatherCondition) {
@@ -13,7 +14,7 @@ const getActivityTypeByWeather = (weather) => {
   }
 
   return indoorWeatherConditions.some((condition) =>
-    weatherCondition.toLowerCase().includes(condition),
+    weatherCondition.toLowerCase().includes(condition)
   )
     ? indoorActivities[Math.floor(Math.random() * indoorActivities.length)]
     : otherActivities[Math.floor(Math.random() * otherActivities.length)];
@@ -24,7 +25,7 @@ export const useActivity = () => {
   const type = getActivityTypeByWeather(weather);
 
   return useQuery({
-    queryKey: `activityByType-${type}`,
+    queryKey: ["activityByType", type],
     enabled: type !== null,
     queryFn: () =>
       axios
